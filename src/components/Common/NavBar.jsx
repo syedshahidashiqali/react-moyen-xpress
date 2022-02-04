@@ -1,5 +1,13 @@
 export default function NavBar() {
   return (
+    <div className="page-wrapper">
+      <Header />
+    </div>
+  );
+}
+
+function Header() {
+  return (
     <header className="header">
       <HeaderTop />
       <HeaderMid />
@@ -42,6 +50,7 @@ function HeaderTop() {
           </div>
         </div>
       </div>
+      <Modal />
     </div>
   );
 }
@@ -1670,6 +1679,153 @@ function SideBarForMobile() {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Modal() {
+  return (
+    <div
+      className="modal fade"
+      id="exampleModal"
+      tabIndex={-1}
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">
+              Login Register
+            </h5>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            />
+          </div>
+          <div className="modal-body">
+            <div className="registerModal">
+              <ul className="nav nav-tabs" id="myTab" role="tablist">
+                <li className="nav-item" role="presentation">
+                  <button
+                    className="nav-link active"
+                    id="home-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#home"
+                    type="button"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
+                    Login
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className="nav-link"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Sign Up
+                  </button>
+                </li>
+              </ul>
+              <div className="tab-content" id="myTabContent">
+                <div
+                  className="tab-pane fade show active"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <div className="row">
+                    <div className="col">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="User Name"
+                        aria-label="User Name"
+                      />
+                    </div>
+                    <div className="col">
+                      <input
+                        type="Password"
+                        className="form-control"
+                        placeholder="Password"
+                        aria-label="Password"
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <div className="forgot">
+                        <a href="#">Forgot Password?</a>
+                        <button>Login</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="tab-pane fade"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <div className="row">
+                    <div className="col">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="User Name"
+                        aria-label="User Name"
+                      />
+                    </div>
+                    <div className="col">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Email Address"
+                        aria-label="Email Address"
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Create Password"
+                        aria-label="Create Password"
+                      />
+                    </div>
+                    <div className="col">
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Confirm Password"
+                        aria-label="Confirm Password"
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <div className="forgot">
+                        <button>Sign Up</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
