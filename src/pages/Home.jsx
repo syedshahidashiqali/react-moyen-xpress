@@ -1,4 +1,4 @@
-import CustomerSupport from "../components/CustomerSupport";
+import CustomerSupport from "../components/Common/CustomerSupport";
 import IntroSlider from "../components/Home/IntroSlider";
 import MainHome from "../components/Home/MainHome";
 

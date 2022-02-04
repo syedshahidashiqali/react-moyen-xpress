@@ -1,7 +1,7 @@
 import Home from "./pages/Home";
-import NavBar from "./components/NavBar";
-import OurVendor from "./components/OurVendor";
-import Footer from "./components/Footer";
+import NavBar from "./components/Common/NavBar";
+import OurVendor from "./components/Common/OurVendor";
+import Footer from "./components/Common/Footer";
 function App() {
   return (
     <>
