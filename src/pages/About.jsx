@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
+import { useNavigate } from "react-router-dom";
+
 export default function About(props) {
-  console.log(2, props);
   const { isHome, setIsHome } = props.home;
 
-  if (isHome === true) {
-    setIsHome(false);
-  }
-
+  useEffect(() => {
+    if (isHome === true) {
+      setIsHome(false);
+    }
+  }, [isHome]);
   return (
     <main className="main about-us">
       <div className="container">
@@ -90,12 +95,13 @@ function Header() {
   );
 }
 function Breadcrumb() {
+  const navigate = useNavigate();
   return (
     <nav className="breadcrumb-nav mt-10 mb-10 pb-8">
       <div className="container">
         <ul className="breadcrumb">
-          <li>
-            <a href="demo1.html">Home</a>
+          <li onClick={() => navigate("/")}>
+            <a href="">Home</a>
           </li>
           <li>About Us</li>
         </ul>
@@ -175,6 +181,7 @@ function CustomerService() {
   );
 }
 function CountSection() {
+  const [focus, setFocus] = useState(false);
   return (
     <section className="count-section mb-10 pb-5">
       <div
@@ -196,47 +203,121 @@ function CountSection() {
       }"
       >
         <div className="counter-wrap">
-          <div className="counter text-center">
-            <span className="count-to" data-to={15}>
-              0
-            </span>
-            <span>M+</span>
-            <h4 className="title title-center">Products For Sale</h4>
-            <p>
-              Diam maecenas ultricies mi eget mauris
-              <br />
-              Nibh tellus molestie nunc non
-            </p>
-          </div>
+          <VisibilitySensor
+            onChange={(isVisible) => {
+              console.log(
+                "count 1st is now %s",
+                isVisible ? "visible" : "hidden"
+              );
+              if (isVisible) {
+                setFocus(true);
+                console.log("1st", isVisible);
+              } else {
+                setFocus(false);
+              }
+            }}
+          >
+            <>
+              <div className="counter text-center">
+                <>
+                  {focus ? (
+                    <CountUp
+                      // redraw={true}
+                      start={focus ? 0 : null}
+                      end={focus ? 15 : null}
+                      duration={2}
+                    />
+                  ) : null}
+                  <span>M+</span>
+                  <h4 className="title title-center">Products For Sale</h4>
+                  <p>
+                    Diam maecenas ultricies mi eget mauris
+                    <br />
+                    Nibh tellus molestie nunc non
+                  </p>
+                </>
+              </div>
+            </>
+          </VisibilitySensor>
         </div>
         <div className="counter-wrap">
-          <div className="counter text-center">
-            <span>$</span>
-            <span className="count-to" data-to={25}>
-              0
-            </span>
-            <span>B+</span>
-            <h4 className="title title-center">Community Earnings</h4>
-            <p>
-              Diam maecenas ultricies mi eget mauris
-              <br />
-              Nibh tellus molestie nunc non
-            </p>
-          </div>
+          <VisibilitySensor
+            onChange={(isVisible) => {
+              console.log(
+                "count 2nd is now %s",
+                isVisible ? "visible" : "hidden"
+              );
+              if (isVisible) {
+                setFocus(true);
+                console.log("2nd", isVisible);
+              } else {
+                setFocus(false);
+              }
+            }}
+          >
+            <>
+              <div className="counter text-center">
+                <>
+                  {focus ? (
+                    <>
+                      <span>$</span>
+                      <CountUp
+                        // redraw={true}
+                        start={focus ? 0 : null}
+                        end={focus ? 25 : null}
+                        duration={2}
+                      />
+                    </>
+                  ) : null}
+                  <span>B+</span>
+                  <h4 className="title title-center">Community Earnings</h4>
+                  <p>
+                    Diam maecenas ultricies mi eget mauris
+                    <br />
+                    Nibh tellus molestie nunc non
+                  </p>
+                </>
+              </div>
+            </>
+          </VisibilitySensor>
         </div>
         <div className="counter-wrap">
-          <div className="counter text-center">
-            <span className="count-to" data-to={100}>
-              0
-            </span>
-            <span>M+</span>
-            <h4 className="title title-center">Growing Buyers</h4>
-            <p>
-              Diam maecenas ultricies mi eget mauris
-              <br />
-              Nibh tellus molestie nunc non
-            </p>
-          </div>
+          <VisibilitySensor
+            onChange={(isVisible) => {
+              console.log(
+                "count 3rd is now %s",
+                isVisible ? "visible" : "hidden"
+              );
+              if (isVisible) {
+                setFocus(true);
+                console.log("3rd", isVisible);
+              } else {
+                setFocus(false);
+              }
+            }}
+          >
+            <div className="counter text-center">
+              <>
+                {focus ? (
+                  <>
+                    <CountUp
+                      // redraw={true}
+                      start={focus ? 0 : null}
+                      end={focus ? 100 : null}
+                      duration={2}
+                    />
+                  </>
+                ) : null}
+                <span>M+</span>
+                <h4 className="title title-center">Growing Buyers</h4>
+                <p>
+                  Diam maecenas ultricies mi eget mauris
+                  <br />
+                  Nibh tellus molestie nunc non
+                </p>
+              </>
+            </div>
+          </VisibilitySensor>
         </div>
       </div>
     </section>

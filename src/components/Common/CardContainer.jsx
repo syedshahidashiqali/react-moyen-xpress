@@ -1,40 +1,42 @@
 import { useState, useEffect } from "react";
 import { getApi } from "../../helperFuncs";
-import { featuredDefault, Images_API } from "../../urls";
+import { Images_API } from "../../urls";
 import OwlCarousel from "react-owl-carousel";
 
-export default function DealsOfTheDay() {
-  const [deals, setDeals] = useState([]);
-  const getDealsOfTheDay = () => {
-    getApi(featuredDefault).then((res) => {
-      const dealData = res[0].slice(0, 50).map((deal) => ({
+export default function CardContainer(props) {
+  const [products, setProducts] = useState([]);
+  const getProducts = () => {
+    getApi(props?.url).then((res) => {
+      const productData = res[0].slice(0, 50).map((deal) => ({
         id: deal?.id,
         name: deal?.name,
         images: deal?.images.slice(0, 2),
       }));
-      setDeals(dealData);
+      setProducts(productData);
     });
   };
 
   useEffect(() => {
-    getDealsOfTheDay();
-  }, [deals.length]);
+    getProducts();
+  }, [products.length]);
 
   return (
     <>
       <div className="title-link-wrapper mb-3 appear-animate">
-        <h2 className="title title-deals mb-1">Deals Of The Day</h2>
-        <div className="product-countdown-container font-size-sm text-dark align-items-center">
-          <label>Offer Ends in: </label>
-          <div
-            className="product-countdown countdown-compact ml-1 font-weight-bold"
-            data-until="+10d"
-            data-relative="true"
-            data-compact="true"
-          >
-            10days,00:00:00
+        <h2 className="title title-deals mb-1">{props?.name}</h2>
+        {props?.isTimeline !== false && (
+          <div className="product-countdown-container font-size-sm text-dark align-items-center">
+            <label>Offer Ends in: </label>
+            <div
+              className="product-countdown countdown-compact ml-1 font-weight-bold"
+              data-until="+10d"
+              data-relative="true"
+              data-compact="true"
+            >
+              10days,00:00:00
+            </div>
           </div>
-        </div>
+        )}
         <a href="#" className="font-weight-bold ls-25">
           More Products
           <i className="w-icon-long-arrow-right" />
@@ -64,12 +66,16 @@ export default function DealsOfTheDay() {
           },
         }}
       >
-        {deals?.length > 0 ? (
-          deals?.map((deal) => (
-            <Card key={deal?.id} name={deal?.name} images={deal?.images} />
+        {products?.length > 0 ? (
+          products?.map((product) => (
+            <Card
+              key={product?.id}
+              name={product?.name}
+              images={product?.images}
+            />
           ))
         ) : (
-          <h1>loading...</h1>
+          <h5>loading...</h5>
         )}
       </OwlCarousel>
     </>

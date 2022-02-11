@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import { useState } from "react";
 import CustomerSupport from "./components/Common/CustomerSupport";
-import RelatedProducts from "./components/Common/RelatedProducts";
+import CardContainer from "./components/Common/CardContainer";
+import { newArrivalDefault } from "./urls";
 function App() {
   const [isHome, setIsHome] = useState(true);
   return (
@@ -20,7 +21,15 @@ function App() {
           element={<About home={{ isHome, setIsHome }} />}
         />
       </Routes>
-      {!isHome && <RelatedProducts home={{ isHome, setIsHome }} />}
+      {!isHome && (
+        <div className="container">
+          <CardContainer
+            url={newArrivalDefault}
+            name={"Related Products"}
+            isTimeline={false}
+          />
+        </div>
+      )}
       <OurVendor />
       <Footer />
     </Router>

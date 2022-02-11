@@ -39,7 +39,7 @@ export const AllFeaturedProductWithOutUser = getApi(
   "products-featured-userskip"
 );
 export const featuredDefault = getApi("featured-data-all-userskip");
-export const newArrivalDefault = getApi("new-arrivals-userskip/");
+export const newArrivalDefault = getApi("new-arrivals-userskip");
 export const SubCategoryDataWithOutUserID = getApi(
   "shop/sub-category-userskip/"
 );

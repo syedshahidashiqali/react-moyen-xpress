@@ -1,14 +1,18 @@
-import DealsOfTheDay from "./DealsOfTheDay";
+import CardContainer from "../Common/CardContainer";
 import CategoryBanner from "./CategoryBanner";
-import NewArrivals from "./NewArrivals";
 import TopWeeklyVendors from "./TopWeeklyVendors";
+import { featuredDefault, newArrivalDefault } from "../../urls";
 
 export default function MainHome() {
   return (
     <>
-      <DealsOfTheDay />
+      <CardContainer url={featuredDefault} name={"Deals Of The Day"} />
       <CategoryBanner />
-      <NewArrivals />
+      <CardContainer
+        url={newArrivalDefault}
+        name={"New Arrivals"}
+        isTimeline={false}
+      />
       <TopWeeklyVendors />
     </>
   );
