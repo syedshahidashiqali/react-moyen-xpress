@@ -8,6 +8,8 @@ import { useState } from "react";
 import CustomerSupport from "./components/Common/CustomerSupport";
 import CardContainer from "./components/Common/CardContainer";
 import { newArrivalDefault } from "./urls";
+import Product from "./pages/Product";
+
 function App() {
   const [isHome, setIsHome] = useState(true);
   return (
@@ -19,6 +21,10 @@ function App() {
         <Route
           path="/about-us"
           element={<About home={{ isHome, setIsHome }} />}
+        />
+        <Route
+          path="/products"
+          element={<Product home={{ isHome, setIsHome }} />}
         />
       </Routes>
       {!isHome && (
