@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
-import { useNavigate } from "react-router-dom";
+import Header from "../components/someCommon/Header";
+import Breadcrumb from "../components/someCommon/BreadCrumb";
 
 export default function About(props) {
   const { isHome, setIsHome } = props.home;
@@ -15,8 +16,8 @@ export default function About(props) {
     <main className="main about-us">
       <div className="container">
         <main className="main">
-          <Header />
-          <Breadcrumb />
+          <Header name={"About Us"} />
+          <Breadcrumb name={"About us"} />
           <div className="page-content">
             <div className="container">
               <section className="introduce mb-10 pb-10">
@@ -85,30 +86,6 @@ export default function About(props) {
   );
 }
 
-function Header() {
-  return (
-    <div className="page-header">
-      <div className="container">
-        <h1 className="page-title mb-0">About Us</h1>
-      </div>
-    </div>
-  );
-}
-function Breadcrumb() {
-  const navigate = useNavigate();
-  return (
-    <nav className="breadcrumb-nav mt-10 mb-10 pb-8">
-      <div className="container">
-        <ul className="breadcrumb">
-          <li onClick={() => navigate("/")}>
-            <a href="">Home</a>
-          </li>
-          <li>About Us</li>
-        </ul>
-      </div>
-    </nav>
-  );
-}
 function CustomerService() {
   return (
     <section className="customer-service mb-7">

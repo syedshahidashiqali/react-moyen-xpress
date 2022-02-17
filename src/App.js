@@ -9,13 +9,18 @@ import CustomerSupport from "./components/Common/CustomerSupport";
 import CardContainer from "./components/Common/CardContainer";
 import { newArrivalDefault } from "./urls";
 import Product from "./pages/Product";
+import ContactUs from "./pages/Contact";
 
 function App() {
   const [isHome, setIsHome] = useState(true);
   return (
     <Router>
       <NavBar />
-      {!isHome && <CustomerSupport />}
+      {!isHome && (
+        <div className="container">
+          <CustomerSupport />
+        </div>
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -25,6 +30,10 @@ function App() {
         <Route
           path="/products"
           element={<Product home={{ isHome, setIsHome }} />}
+        />
+        <Route
+          path="/contact-us"
+          element={<ContactUs home={{ isHome, setIsHome }} />}
         />
       </Routes>
       {!isHome && (
