@@ -10,6 +10,7 @@ import CardContainer from "./components/Common/CardContainer";
 import { newArrivalDefault } from "./urls";
 import Product from "./pages/Product";
 import ContactUs from "./pages/Contact";
+import Shop from "./pages/Shop";
 
 function App() {
   const [isHome, setIsHome] = useState(true);
@@ -35,6 +36,7 @@ function App() {
           path="/contact-us"
           element={<ContactUs home={{ isHome, setIsHome }} />}
         />
+        <Route path="/shop" element={<Shop home={{ isHome, setIsHome }} />} />
       </Routes>
       {!isHome && (
         <div className="container">
